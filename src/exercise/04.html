@@ -6,26 +6,16 @@
   <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.9.3/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
-    const PropTypes = {
-      string(props, propName, componentName) {
-        const type = typeof props[propName]
-        if (type != 'string') {
-          return new Error(
-            `Component ${componentName} needs prop "${propName}" to be of type "string" but got ${type}`,
-          )
-        }
-      },
-    }
-
     const Message = ({subject, greeting}) => (
       <div className="message">
         {greeting}, {subject}
       </div>
     )
     Message.propTypes = {
-      subject: PropTypes.string,
-      greeting: PropTypes.string,
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
     }
     const element = (
       <div className="container">
